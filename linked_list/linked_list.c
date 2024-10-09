@@ -10,12 +10,15 @@ typedef struct Node {
 // Create a new node
 Node* createNode(int data) {
     Node* newNode = (Node*)malloc(sizeof(Node));
+
     if (!newNode) {
         printf("Memory allocation failed!\n");
         exit(1);
     }
+
     newNode->data = data;
     newNode->next = NULL;
+
     return newNode;
 }
 
@@ -25,6 +28,7 @@ void printList(Node* node) {
         printf("%d -> ", node->data);
         node = node->next;
     }
+    
     printf("null\n");
 }
 

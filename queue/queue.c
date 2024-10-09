@@ -56,6 +56,7 @@ int dequeue(struct Queue *q)
   int item = q->queue[q->front];
   q->front = (q->front + 1) % CAPACITY;
   q->size--;
+  
   return item;
 }
 

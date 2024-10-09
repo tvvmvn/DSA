@@ -13,9 +13,11 @@ Node* myHashSet[HASH_SET_SIZE] = {NULL};
 
 int hashFunction(const char* value) {
     int sum = 0;
+
     for (int i = 0; value[i] != '\0'; i++) {
         sum += value[i];
     }
+
     return sum % HASH_SET_SIZE;
 }
 
@@ -33,9 +35,11 @@ void add(const char* value) {
         myHashSet[index] = newNode;
     } else {
         Node* current = myHashSet[index];
+
         while (current->next != NULL) {
             current = current->next;
         }
+
         current->next = newNode;
     }
 }
@@ -43,12 +47,14 @@ void add(const char* value) {
 int contains(const char* value) {
     int index = hashFunction(value);
     Node* current = myHashSet[index];
+
     while (current != NULL) {
         if (strcmp(current->value, value) == 0) {
             return 1; // True
         }
         current = current->next;
     }
+    
     return 0; // False
 }
 
@@ -75,10 +81,12 @@ int main() {
     for (int i = 0; i < HASH_SET_SIZE; i++) {
         printf("Bucket %d: ", i);
         Node* current = myHashSet[i];
+
         while (current != NULL) {
             printf("%s -> ", current->value);
             current = current->next;
         }
+
         printf("NULL\n");
     }
     
