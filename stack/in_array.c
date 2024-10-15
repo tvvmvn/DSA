@@ -21,8 +21,10 @@ void push(Stack *s, int element) {
     printf("Stack is full\n");
     return;
   }
+
   s->top++;
   s->stack[s->top] = element;
+  // s->stack[++s->top] = element; // short-hand
 }
 
 int pop(Stack *s) {
@@ -57,7 +59,7 @@ void printStack(Stack *s) {
   for (int i = 0; i <= s->top; ++i) {
     printf("%c ", s->stack[i]);
   }
-  
+
   printf("\n");
 }
 
@@ -80,4 +82,10 @@ int main() {
 }
 
 
-//C
+/*
+Stack: A B C 
+Pop: C
+Peek: B
+isEmpty: 0
+Size: 2
+*/

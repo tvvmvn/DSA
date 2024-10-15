@@ -3,8 +3,7 @@
 
 #define CAPACITY 10
 
-struct Queue
-{
+struct Queue {
   int queue[CAPACITY];
   int front;
   int size;
@@ -17,8 +16,7 @@ bool isEmpty(struct Queue *q);
 int size(struct Queue *q);
 void printQueue(struct Queue *q);
 
-int main()
-{
+int main() {
   struct Queue myQueue = {.front = 0, .size = 0};
 
   enqueue(&myQueue, 'A');
@@ -35,24 +33,22 @@ int main()
   return 0;
 }
 
-void enqueue(struct Queue *q, int element)
-{
-  if (q->size == CAPACITY)
-  {
+void enqueue(struct Queue *q, int element) {
+  if (q->size == CAPACITY) {
     printf("Queue is full\n");
     return;
   }
+
   q->queue[(q->front + q->size) % CAPACITY] = element;
   q->size++;
 }
 
-int dequeue(struct Queue *q)
-{
-  if (isEmpty(q))
-  {
+int dequeue(struct Queue *q) {
+  if (isEmpty(q)) {
     printf("Queue is empty\n");
     return -1;
   }
+
   int item = q->queue[q->front];
   q->front = (q->front + 1) % CAPACITY;
   q->size--;
@@ -60,32 +56,37 @@ int dequeue(struct Queue *q)
   return item;
 }
 
-int peek(struct Queue *q)
-{
-  if (isEmpty(q))
-  {
+int peek(struct Queue *q) {
+  if (isEmpty(q)) {
     printf("Queue is empty\n");
     return -1;
   }
+
   return q->queue[q->front];
 }
 
-bool isEmpty(struct Queue *q)
-{
+bool isEmpty(struct Queue *q) {
   return q->size == 0;
 }
 
-int size(struct Queue *q)
-{
+int size(struct Queue *q) {
   return q->size;
 }
 
-void printQueue(struct Queue *q)
-{
+void printQueue(struct Queue *q) {
   printf("Queue: ");
-  for (int i = 0; i < q->size; ++i)
-  {
+  
+  for (int i = 0; i < q->size; ++i) {
     printf("%c ", q->queue[(q->front + i) % CAPACITY]);
   }
+  
   printf("\n");
 }
+
+/*
+Queue: A B C
+Dequeue: A
+Peek: B
+isEmpty: 0
+Size: 2
+*/
