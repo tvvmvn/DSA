@@ -1,4 +1,4 @@
-# DSA (Data Structure & Algorithm)
+## DSA (Data Structure & Algorithm)
 > This contents is based on C Language.
 
 1. Array

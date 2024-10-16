@@ -1,36 +1,57 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-typedef struct Node {
-  char value;
-  // address of child node
-  struct Node* left;
-  struct Node* right;
-} Node;
+typedef struct TreeNode {
+  char data;
+  struct TreeNode* left;
+  struct TreeNode* right;
+} TreeNode;
 
-Node createNode(char value) {
-  Node node;
-  node.value = value;
+TreeNode* createNewNode(char data) {
+  TreeNode* newNode = (TreeNode*)malloc(sizeof(TreeNode));
+  
+  newNode->data = data;
+  newNode->left = NULL;
+  newNode->right = NULL;
 
-  return node;
+  return newNode;
 }
 
 int main() {
-  // create nodes
-  Node root = createNode('R');
-  Node nodeA = createNode('A');
-  Node nodeB = createNode('B');
-  Node nodeC = createNode('C');
+  TreeNode* root = createNewNode('R');
+  TreeNode* nodeA = createNewNode('A');
+  TreeNode* nodeB = createNewNode('B');
+  TreeNode* nodeC = createNewNode('C');
+  TreeNode* nodeD = createNewNode('D');
+  TreeNode* nodeE = createNewNode('E');
+  TreeNode* nodeF = createNewNode('F');
+  TreeNode* nodeG = createNewNode('G');
 
-  // connect nodes
-  root.left = &nodeA;
-  root.right = &nodeB;
-  
-  nodeA.left = &nodeC;
+  root->left = nodeA;
+  root->right = nodeB;
 
-  // access nodes
-  printf("%c\n", root.value); // R
-  printf("%c\n", root.left->value); // A
-  printf("%c\n", root.right->value); // B
-  printf("%c\n", root.left->left->value); // C
+  nodeA->left = nodeC;
+  nodeA->right = nodeD;
+
+  nodeB->left = nodeE;
+  nodeB->right = nodeF;
+
+  nodeF->left = nodeG;
+
+  // Test
+  printf("root->right->left->data: %c\n", root->right->left->data);
+
+  free(nodeG);
+  free(nodeF);
+  free(nodeE);
+  free(nodeB);
+  free(nodeC);
+  free(nodeD);
+  free(nodeA);
+  free(root);
+
+  return 0;
 }
+
+
+// root->right->left->data: E

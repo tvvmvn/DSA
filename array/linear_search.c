@@ -1,21 +1,11 @@
 #include <stdio.h>
-#include <stdlib.h>
 
-// linear search
-int linearSearch(int arr[], int size, int targetVal) {
-  for (int i = 0; i < size; i++) {
-    if (arr[i] == targetVal) {
-      return i;
-    }
-  }
-
-  return -1;
-}
+int linearSearch(int arr[], int size, int targetVal);
 
 int main() {
   int arr[] = {3, 7, 2, 9, 5};
   int targetVal = 9;
-  int size = sizeof(arr) / sizeof(arr[0]); // 5
+  int size = sizeof(arr) / sizeof(arr[0]);
 
   int result = linearSearch(arr, size, targetVal);
 
@@ -28,3 +18,14 @@ int main() {
   return 0;
 }
 
+int linearSearch(int arr[], int size, int targetVal) {
+  for (int i = 0; i < size; i++) {
+    if (arr[i] == targetVal) {
+      return i;
+    }
+  }
+  return -1;
+}
+
+
+// Value 9 found at index 3
