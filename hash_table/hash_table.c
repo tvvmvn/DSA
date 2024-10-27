@@ -1,13 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-
-/*
-Hash Tables are sometimes preferred instead of arrays or linked lists is 
-because searching for, adding, and deleting data can be done really quickly, 
-even for large amounts of data.
-*/
-
 #define HASH_SET_SIZE 10
 
 typedef struct Node {
@@ -104,4 +97,17 @@ int main() {
   return 0;
 }
 
-// C
+/*
+Bucket 0: NULL
+Bucket 1: Jones -> NULL
+Bucket 2: NULL
+Bucket 3: Lisa -> Stuart -> NULL
+Bucket 4: NULL
+Bucket 5: Bob -> NULL
+Bucket 6: NULL
+Bucket 7: Siri -> NULL
+Bucket 8: Pete -> NULL
+Bucket 9: NULL
+
+Contains Stuart: true
+*/
