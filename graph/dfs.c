@@ -21,6 +21,7 @@ void initGraph(Graph *g) {
 void addEdge(Graph *g, int u, int v) {
   if (u >= 0 && u < SIZE && v >= 0 && v < SIZE) {
     g->adjMatrix[u][v] = 1;
+    // In a directed Graph, remove this line.
     g->adjMatrix[v][u] = 1;
   }
 }
