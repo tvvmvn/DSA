@@ -9,12 +9,19 @@ typedef struct TreeNode {
 
 TreeNode* createNewNode(char data) {
   TreeNode* newNode = (TreeNode*)malloc(sizeof(TreeNode));
-  
   newNode->data = data;
   newNode->left = NULL;
   newNode->right = NULL;
-
   return newNode;
+}
+
+void preOrderTraversal(TreeNode* root) {
+  if (root == NULL) {
+    return;
+  }
+  printf("%c, ", root->data);
+  preOrderTraversal(root->left);
+  preOrderTraversal(root->right);
 }
 
 int main() {
@@ -38,8 +45,8 @@ int main() {
 
   nodeF->left = nodeG;
 
-  // Test
-  printf("root->right->left->data: %c\n", root->right->left->data);
+  // Traverse
+  preOrderTraversal(root);
 
   free(nodeG);
   free(nodeF);
@@ -57,5 +64,5 @@ int main() {
 /*
 Output
 
-root->right->left->data: E
+R, A, C, D, B, E, F, G,
 */
